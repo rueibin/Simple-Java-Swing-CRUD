@@ -11,14 +11,15 @@ import com.rueibin.entity.Department;
 import com.rueibin.util.JDBCUtil;
 
 public class DepartmentDAOImpl implements DepartmentDAO {
+	private Connection conn;
+	private PreparedStatement ps;
+	private ResultSet rs;
 
 	@Override
 	public List<Department> getDepartments() {
 		List<Department> depts = new ArrayList<Department>();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
 		try {
-			Connection conn = JDBCUtil.getConn();
+			conn = JDBCUtil.getConn();
 			String sql = "select * from department";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -32,11 +33,8 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			JDBCUtil.closeConn();
-			JDBCUtil.close(ps);
-			JDBCUtil.close(rs);
+			JDBCUtil.close(ps, rs);
 		}
 		return null;
 	}
-
 }

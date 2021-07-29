@@ -39,36 +39,22 @@ public class JDBCUtil {
 		return conn;
 	}
 
-	public static void closeConn(){
+	public static void close(PreparedStatement ps, ResultSet rs) {
 		Connection conn = tl.get();
 		try {
 			if (conn != null) {
 				conn.close();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		tl.set(null);
-	}
-
-	public static void close(PreparedStatement pstmt) {
-		try {
-			if (pstmt != null) {
-				pstmt.close();
+			if (ps != null) {
+				ps.close();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void close(ResultSet rs) {
-		try {
 			if (rs != null) {
 				rs.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		tl.set(null);
 	}
 
 }

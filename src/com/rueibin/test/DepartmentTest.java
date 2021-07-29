@@ -7,7 +7,7 @@ public class DepartmentTest {
 	public static void main(String[] args) {
 		getDept();
 	}
-
+	
 	private static void getDept() {
 		DepartmentDAO d = new DepartmentDAOImpl();
 		System.out.println(d.getDepartments());
