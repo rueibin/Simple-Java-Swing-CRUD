@@ -4,18 +4,18 @@
 ## Preview
 
 **List Page**
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/blob/master/images/list.png)
+![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/tree/master/images/list.png)
 
 **Create Page** 
 
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/blob/master/images/add.png)
+![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/tree/master/images/add.png)
 
 **Edit Page**
 
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/blob/master/images/update.png)
+![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/tree/master/images/update.png)
 
 **Search Employee**
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/blob/master/images/search.png)
+![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/tree/master/images/search.png)
 
 
 
