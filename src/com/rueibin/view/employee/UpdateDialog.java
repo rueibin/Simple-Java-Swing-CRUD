@@ -34,12 +34,13 @@ public class UpdateDialog extends JDialog {
 	private DepartmentDAO departmentDAO = new DepartmentDAOImpl();
 	private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 	private Employee emp;
+	private Integer empId;
 
 	public UpdateDialog() {
 		setSize(350, 240);
 		setLocationRelativeTo(null);
 		setTitle("修改員工");
-		
+
 		setModal(true);
 		setLayout(new GridLayout(5, 1));
 
@@ -56,8 +57,9 @@ public class UpdateDialog extends JDialog {
 
 		nameField = new JTextField(10);
 		emailField = new JTextField(10);
-		
+
 		deptJComboBox = new JComboBox();
+		initDept(null);
 
 		manJRadioButton = new JRadioButton("男");
 		manJRadioButton.setSelected(true);
@@ -96,10 +98,11 @@ public class UpdateDialog extends JDialog {
 	}
 
 	private void initDept(Integer deptId) {
+		deptJComboBox.removeAllItems();
 		List<Department> deptList = departmentDAO.getDepartments();
 		for (Department dept : deptList) {
 			deptJComboBox.addItem(dept);
-			if(deptId!=null && deptId==dept.getId()) {
+			if (deptId != null && deptId == dept.getId()) {
 				deptJComboBox.setSelectedItem(dept);
 			}
 		}
@@ -131,12 +134,12 @@ public class UpdateDialog extends JDialog {
 					}
 
 					Employee emp = new Employee();
+					emp.setId(empId);
 					emp.setName(name);
 					emp.setEmail(email);
 					emp.setGender(gender);
 					emp.setDeptId(deptId);
-					employeeDAO.save(emp);
-					if (employeeDAO.save(emp) == 1) {
+					if (employeeDAO.update(emp) == 1) {
 						MyUtil.showSuccess(jp1, "更新成功");
 						hideDailog();
 						reset();
@@ -155,7 +158,7 @@ public class UpdateDialog extends JDialog {
 		nameField.setText(emp.getName());
 		emailField.setText(emp.getEmail());
 		manJRadioButton.setSelected(true);
-		if(emp.getGender()==2) {
+		if (emp.getGender() == 2) {
 			womanJRadioButton.setSelected(true);
 		}
 		initDept(emp.getDeptId());
@@ -164,9 +167,10 @@ public class UpdateDialog extends JDialog {
 	private void hideDailog() {
 		setVisible(false);
 	}
-	
+
 	public void show(Employee emp) {
 		this.emp = emp;
+		empId = emp.getId();
 		reset();
 		setVisible(true);
 	}

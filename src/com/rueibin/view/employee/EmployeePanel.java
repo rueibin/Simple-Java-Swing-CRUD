@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import com.rueibin.dao.EmployeeDAO;
@@ -94,7 +95,8 @@ public class EmployeePanel extends JPanel {
 		empModel.getDataVector().clear();
 		List<Employee> employeeList = employeeDAO.getEmployees();
 		for (Employee emp : employeeList) {
-			Object[] rowData = { emp.getId(), emp.getName(), emp.getGender(), emp.getEmail(), emp.getDept().getName() };
+			String gender= emp.getGender()==1?"男":"女";
+			Object[] rowData = { emp.getId(), emp.getName(), gender, emp.getEmail(), emp.getDept().getName() };
 			empModel.addRow(rowData);
 		}
 	}

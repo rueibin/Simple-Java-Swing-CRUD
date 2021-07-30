@@ -39,7 +39,7 @@ public class AddDialog extends JDialog {
 		setSize(350, 240);
 		setLocationRelativeTo(null);
 		setTitle("新增員工");
-		
+
 		setModal(true);
 		setLayout(new GridLayout(5, 1));
 
@@ -98,6 +98,7 @@ public class AddDialog extends JDialog {
 	}
 
 	private void initDept() {
+		deptJComboBox.removeAllItems();
 		List<Department> deptList = departmentDAO.getDepartments();
 		for (Department dept : deptList) {
 			this.deptJComboBox.addItem(dept);
@@ -118,6 +119,10 @@ public class AddDialog extends JDialog {
 					}
 					String email = emailField.getText();
 					String regex = "^(.+)@(.+)$";
+					if (email == null || "".equals(email.trim())) {
+						MyUtil.showError(jp1, "必須輸入email");
+						return;
+					}
 					if (!email.matches(regex)) {
 						MyUtil.showError(jp1, "email格式錯誤");
 						return;
@@ -134,11 +139,10 @@ public class AddDialog extends JDialog {
 					emp.setEmail(email);
 					emp.setGender(gender);
 					emp.setDeptId(deptId);
-					employeeDAO.save(emp);
 					if (employeeDAO.save(emp) == 1) {
 						MyUtil.showSuccess(jp1, "新增成功");
-						hideDailog();
 						reset();
+						hideDailog();
 					}
 				} else {
 					reset();
