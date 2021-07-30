@@ -4,7 +4,7 @@
 ## Preview
 
 **List Page**
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/list.png)
+<img src="./images/list.PNG">
 
 **Create Page** 
 
@@ -12,10 +12,11 @@
 
 **Edit Page**
 
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/update.png)
+![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/update.PNG)
+          
 
 **Search Employee**
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/search.png)
+![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/search.PNG)
 
 
 
