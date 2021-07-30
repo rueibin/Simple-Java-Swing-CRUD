@@ -4,19 +4,20 @@
 ## Preview
 
 **List Page**
+<br/>
 <img src="./images/list.PNG">
 
 **Create Page** 
-
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/add.PNG)
+<br/>
+<img src="./images/add.PNG">
 
 **Edit Page**
-
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/update.PNG)
-          
+<br/>
+<img src="./images/update.PNG">
 
 **Search Employee**
-![avatar](https://github.com/rueibin/Simple-Java-Swing-CRUD/master/images/search.PNG)
+<br/>
+<img src="./images/search.PNG">
 
 
 
