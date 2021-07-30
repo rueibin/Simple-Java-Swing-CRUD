@@ -47,7 +47,7 @@ public class EmployeePanel extends JPanel {
 		updateDialog = new UpdateDialog();
 		initTop();
 		initContent();
-		initFooter();
+		initFooter();		
 	}
 
 	private void initTop() {
@@ -92,7 +92,8 @@ public class EmployeePanel extends JPanel {
 	}
 
 	public void initRowData() {
-		empModel.getDataVector().clear();
+		//empModel.getDataVector().clear();
+		empModel.setRowCount(0); //解決ArrayIndexOutOfBoundsException
 		List<Employee> employeeList = employeeDAO.getEmployees();
 		for (Employee emp : employeeList) {
 			String gender= emp.getGender()==1?"男":"女";
