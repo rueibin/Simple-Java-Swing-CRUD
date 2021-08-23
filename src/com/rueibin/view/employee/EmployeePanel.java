@@ -160,7 +160,8 @@ public class EmployeePanel extends JPanel {
 		empModel.getDataVector().clear();
 		List<Employee> employeeList = employeeDAO.getEmployeeByName(name);
 		for (Employee emp : employeeList) {
-			Object[] rowData = { emp.getId(), emp.getName(), emp.getGender(), emp.getEmail(), emp.getDept().getName() };
+			String gender= emp.getGender()==1?"男":"女";
+			Object[] rowData = { emp.getId(), emp.getName(), gender, emp.getEmail(), emp.getDept().getName() };
 			empModel.addRow(rowData);
 		}
 	}
