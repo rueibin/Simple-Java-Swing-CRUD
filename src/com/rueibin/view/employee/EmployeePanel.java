@@ -106,7 +106,7 @@ public class EmployeePanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == addJButton) {
-				addDialog.setVisible(true);
+				addDialog.setVisible(true);	
 				refreshData();
 			} else if (e.getSource() == deleteJButton) {
 				deleteEmp();

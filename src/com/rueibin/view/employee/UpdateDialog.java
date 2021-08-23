@@ -115,17 +115,43 @@ public class UpdateDialog extends JDialog {
 			try {
 				if (e.getSource() == saveJButton) {
 
+//					String name = nameField.getText();
+//					if (name == null || "".equals(name.trim())) {
+//						MyUtil.showError(jp1, "必須輸入員工名稱");
+//						return;
+//					}
+//					String email = emailField.getText();
+//					String regex = "^(.+)@(.+)$";
+//					if (!email.matches(regex)) {
+//						MyUtil.showError(jp1, "email格式錯誤");
+//						return;
+//					}
 					String name = nameField.getText();
+					String nameRegex="[A-Za-z\u4E00-\u9FA5]*$";
 					if (name == null || "".equals(name.trim())) {
 						MyUtil.showError(jp1, "必須輸入員工名稱");
 						return;
 					}
+					if(name.trim().length()>10) {
+						MyUtil.showError(jp1, "員工名稱字串1-10字");
+						return;
+					}
+					if (!name.matches(nameRegex)) {
+						MyUtil.showError(jp1, "員工姓名只能是英文或中文字");
+						return;
+					}
+					
 					String email = emailField.getText();
-					String regex = "^(.+)@(.+)$";
-					if (!email.matches(regex)) {
+					String mailRegex = "^(.+)@(.+)$";
+					if (email == null || "".equals(email.trim())) {
+						MyUtil.showError(jp1, "必須輸入email");
+						return;
+					}
+					if (!email.matches(mailRegex)) {
 						MyUtil.showError(jp1, "email格式錯誤");
 						return;
 					}
+					
 					int deptId = ((Department) deptJComboBox.getSelectedItem()).getId();
 
 					int gender = 1;

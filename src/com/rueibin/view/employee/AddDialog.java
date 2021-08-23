@@ -35,7 +35,7 @@ public class AddDialog extends JDialog {
 	private DepartmentDAO departmentDAO = new DepartmentDAOImpl();
 	private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
-	public AddDialog() {
+	public AddDialog() {		
 		setSize(350, 240);
 		setLocationRelativeTo(null);
 		setTitle("新增員工");
@@ -113,17 +113,27 @@ public class AddDialog extends JDialog {
 				if (e.getSource() == saveJButton) {
 
 					String name = nameField.getText();
+					String nameRegex="[A-Za-z\u4E00-\u9FA5]*$";
 					if (name == null || "".equals(name.trim())) {
 						MyUtil.showError(jp1, "必須輸入員工名稱");
 						return;
 					}
+					if(name.trim().length()>10) {
+						MyUtil.showError(jp1, "員工名稱字串1-10字");
+						return;
+					}
+					if (!name.matches(nameRegex)) {
+						MyUtil.showError(jp1, "員工姓名只能是英文或中文字");
+						return;
+					}
+					
 					String email = emailField.getText();
-					String regex = "^(.+)@(.+)$";
+					String mailRegex = "^(.+)@(.+)$";
 					if (email == null || "".equals(email.trim())) {
 						MyUtil.showError(jp1, "必須輸入email");
 						return;
 					}
-					if (!email.matches(regex)) {
+					if (!email.matches(mailRegex)) {
 						MyUtil.showError(jp1, "email格式錯誤");
 						return;
 					}
@@ -144,7 +154,7 @@ public class AddDialog extends JDialog {
 						reset();
 						hideDailog();
 					}
-				} else {
+				}else {
 					reset();
 				}
 			} catch (MyException e1) {
